@@ -1,0 +1,52 @@
+/* --- Estilos normales (Ocultar el componente en pantalla) --- */
+.ticket-termico-container {
+    display: none;
+    font-family: 'Courier New', Courier, monospace; /* Tipografía clásica de tiquetera */
+    font-size: 12px;
+    color: #000;
+    line-height: 1.2;
+}
+
+/* --- Estilos exclusivos de Impresión --- */
+@media print {
+    /* Ocultar toda la app web de React */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Mostrar únicamente el contenedor del ticket y forzar su posición */
+    .ticket-termico-container, .ticket-termico-container * {
+        visibility: visible;
+    }
+
+    .ticket-termico-container {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 58mm; /* Ajustar a 80mm si la tiquetera es de las grandes */
+        padding: 2mm;
+        background: #fff;
+    }
+
+    /* Quitar márgenes de página predeterminados del navegador, headers y footers */
+    @page {
+        margin: 0;
+    }
+}
+
+/* Formatos internos del ticket */
+.ticket-header { text-align: center; margin-bottom: 5px; }
+.ticket-header h2 { margin: 0; font-size: 16px; }
+.ticket-header p { margin: 2px 0; font-size: 11px; }
+
+.ticket-divider { border: none; border-top: 1px dashed #000; margin: 5px 0; }
+
+.ticket-tabla-productos { width: 100%; border-collapse: collapse; font-size: 11px; }
+.txt-izq { text-align: left; }
+.txt-der { text-align: right; }
+
+.ticket-totales { font-size: 12px; margin-top: 5px; }
+.ticket-total-linea { font-size: 14px; display: flex; justify-content: space-between; margin: 4px 0; }
+
+.ticket-footer { text-align: center; margin-top: 15px; font-size: 9px; }
